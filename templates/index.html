@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Instagram</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* constrain width on larger screens */
+    body {
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Instagram Title -->
+  <h1 class="text-center fw-bold mb-4">Instagram</h1>
+
+  <!-- AUTH CONTROLS (stacked vertically) -->
+  <div id="auth-controls" class="d-grid gap-3 mb-4">
+    <input id="email"
+           type="email"
+           class="form-control form-control-lg"
+           placeholder="Email" />
+    <input id="password"
+           type="password"
+           class="form-control form-control-lg"
+           placeholder="Password" />
+    <button id="btn-signin"
+            class="btn btn-primary btn-lg"
+            type="button">
+      Sign In
+    </button>
+    <button id="btn-signup"
+            class="btn btn-secondary btn-lg"
+            type="button">
+      Sign Up
+    </button>
+    <button id="btn-signout"
+            class="btn btn-danger btn-lg d-none"
+            type="button">
+      Sign Out
+    </button>
+    <a id="btn-profile"
+       class="btn btn-link btn-lg d-none"
+       href="#">
+      My Profile
+    </a>
+    <a id="btn-feed"
+       class="btn btn-link btn-lg d-none"
+       href="/feed">
+      Feed
+    </a>
+  </div>
+
+  <!-- POST FORM (hidden until authenticated) -->
+  <form id="post-form" class="d-none">
+    <div class="mb-3">
+      <label for="image-input" class="form-label">Select Image</label>
+      <input
+        type="file"
+        id="image-input"
+        class="form-control"
+        accept="image/png, image/jpeg"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="caption-input" class="form-label">
+        Caption <small class="text-muted">(max 200 chars)</small>
+      </label>
+      <textarea
+        id="caption-input"
+        class="form-control"
+        rows="3"
+        maxlength="200"
+        placeholder="Write a caption..."></textarea>
+      <div class="form-text text-end">
+        <span id="char-count">0</span>/200
+      </div>
+    </div>
+    <button id="upload-button"
+            type="button"
+            class="btn btn-success btn-lg w-100">
+      Upload
+    </button>
+  </form>
+
+  <!-- Firebase + Auth + Post logic -->
+  <script src="/static/env.js"></script>
+  <script type="module" src="/static/firebase-init.js"></script>
+  <script type="module" src="/static/firebase-auth.js"></script>
+  <script type="module" src="/static/post.js"></script>
+  <script>
+    // live character count for caption
+    const cap = document.getElementById('caption-input');
+    const cnt = document.getElementById('char-count');
+    cap.addEventListener('input', () => {
+      cnt.textContent = cap.value.length;
+    });
+  </script>
+</body>
+</html>

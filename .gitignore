@@ -1,0 +1,15 @@
+
+__pycache__/
+*.py[cod]
+
+
+serviceAccountKey.json
+
+
+.DS_Store
+Thumbs.db
+
+
+node_modules/
+/build/
+/dist/

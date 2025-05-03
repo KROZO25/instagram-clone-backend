@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create a New Post</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-…"
+    crossorigin="anonymous"
+  >
+</head>
+<body class="container py-4">
+
+  <!-- AUTH CONTROLS -->
+  <div id="auth-controls" class="d-flex mb-4">
+    <input
+      id="email"
+      type="email"
+      class="form-control me-2"
+      placeholder="Email"
+    />
+    <input
+      id="password"
+      type="password"
+      class="form-control me-2"
+      placeholder="Password"
+    />
+    <button id="btn-signin"  class="btn btn-primary me-2">Sign In</button>
+    <button id="btn-signup"  class="btn btn-secondary me-2">Sign Up</button>
+    <button id="btn-signout" class="btn btn-danger d-none">Sign Out</button>
+
+    <!-- FEED & PROFILE links (shown once authenticated) -->
+    <a id="btn-feed"    class="btn btn-info ms-2 d-none">Feed</a>
+    <a id="btn-profile" class="btn btn-info ms-2 d-none">My Profile</a>
+  </div>
+
+  <h1>Create a New Post</h1>
+
+  <!-- POST FORM (hidden until authenticated) -->
+  <form id="post-form" class="d-none">
+    <div class="mb-3">
+      <label for="image-input" class="form-label">Select Image</label>
+      <input
+        type="file"
+        id="image-input"
+        class="form-control"
+        accept="image/*"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="caption-input" class="form-label">Caption</label>
+      <textarea
+        id="caption-input"
+        class="form-control"
+        rows="3"
+        placeholder="Write a caption..."></textarea>
+    </div>
+    <button id="upload-button" type="button" class="btn btn-success">
+      Upload
+    </button>
+  </form>
+
+  <!-- 1) load your Firebase config onto window -->
+  <script src="/static/env.js"></script>
+  <!-- 2) initialize Firebase (exports `app`) -->
+  <script type="module" src="/static/firebase-init.js"></script>
+  <!-- 3) authentication logic (wires up sign‑in/out, Feed & My Profile) -->
+  <script type="module" src="/static/firebase-auth.js"></script>
+  <!-- 4) post‑upload logic -->
+  <script type="module" src="/static/post.js"></script>
+</body>
+</html>

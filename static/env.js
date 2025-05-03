@@ -1,0 +1,9 @@
+ // static/env.js
+ window.firebaseConfig = {
+  apiKey: "AIzaSyCqoAFnoLPQb5WVD590K5tlhpnudGPaFDQ",
+  authDomain: "ig-clone-backend-458508.firebaseapp.com",
+  projectId: "ig-clone-backend-458508",
+  storageBucket: "ig-clone-backend-458508.firebasestorage.app",
+  messagingSenderId: "966628674708",
+  appId: "1:966628674708:web:779fa4f3991788789e3881"
+};
